@@ -23,17 +23,9 @@ ssl_middleware_opts = [
 cfg.CONF.register_opts(ssl_middleware_opts)
 
 
-def nova_ssl_factory(global_conf):
-    from nova.common import wsgi
-    def filter(app):
-        return SSLMiddleware(app)
-    return filter
-
-
-class SSLMiddleware(wsgi.Middleware):
+class SSLMiddlewareMixin(object):
           
-    def __init__(self, application):
-        super(SSLMiddleware, self).__init__(application)
+    def __init__(self):
         self.secure_proxy_ssl_header = 'HTTP_{0}'.format(
             cfg.CONF.secure_proxy_ssl_header.upper().replace('-', '_'))
 
