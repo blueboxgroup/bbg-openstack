@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+#
+# Copyright © 2015 Blue Box Group, LLC
+# Author: Craig Tracey <craigtracey@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may
 # not use this file except in compliance with the License. You may obtain
@@ -24,5 +28,5 @@ class NovaSSLMiddleware(SSLMiddlewareMixin, wsgi.Middleware):
         return filter
 
     def __init__(self, application):
-	SSLMiddlewareMixin.__init__(self)
+        SSLMiddlewareMixin.__init__(self)
         wsgi.Middleware.__init__(self, application)
